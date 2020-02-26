@@ -14,17 +14,15 @@ struct ContentView: View {
     
     @ObservedObject var courseViewModel = CourseViewModel()
     
+    var courseList = [
+        Course(name: "first course", bannerUrl: ""),
+        Course(name: "second course", bannerUrl: "")
+    ]
+    
     var body: some View {
         NavigationView {
-            ScrollView {
-                HStack{
-                    Spacer()
-                }
-                
-                ForEach(courseViewModel.courses){course in
-                    CourseItem(name: course.name, bannerUrl: course.bannerUrl)
-                }
-                
+            List(courseViewModel.courses){ course in
+                CourseItem(name: course.name, bannerUrl: course.bannerUrl)
             }.navigationBarTitle("Course List")
                 .navigationBarItems(trailing: Button(action: {
                     self.courseViewModel.fetchCourses()
