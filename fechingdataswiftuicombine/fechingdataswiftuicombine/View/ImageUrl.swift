@@ -27,8 +27,11 @@ struct ImageViewContainer: View {
     }
     
     var body: some View{
-        Image(uiImage: UIImage(data: remoteUrl.data) ?? UIImage(named: "placeholder")!)
-            .resizable()
+        GeometryReader{ geo in
+            Image(uiImage: UIImage(data: self.remoteUrl.data) ?? UIImage(named: "placeholder")!)
+                .resizable()
+                .frame(width: geo.size.width)
+        }
     }
 }
 

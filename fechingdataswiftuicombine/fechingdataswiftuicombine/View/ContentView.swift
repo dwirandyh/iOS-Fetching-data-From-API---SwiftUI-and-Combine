@@ -17,11 +17,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                Text(courseViewModel.messages)
+                HStack{
+                    Spacer()
+                }
                 
                 ForEach(courseViewModel.courses){course in
-                    Text(course.name)
-                    
                     CourseItem(name: course.name, bannerUrl: course.bannerUrl)
                 }
                 
@@ -43,8 +43,10 @@ struct CourseItem : View {
     
     var body: some View {
         VStack{
-            ImageRow(url: bannerUrl).frame(width: 100, height: 50)
+            ImageRow(url: bannerUrl).frame(height: 200)
             Text(self.name)
+            
+            Divider()
         }
     }
 }
